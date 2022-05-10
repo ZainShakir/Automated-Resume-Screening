@@ -1,0 +1,13 @@
+.navbar{
+    border-bottom: #e600e6 solid 5px;
+}
+.navbar-brand{
+    color: #e600e6 !important;
+    font-size: 24px;
+}
+.nav-link{
+    text-transform: uppercase;
+}
+.nav-link:hover{
+    color: #e600e6 !important;
+}
