@@ -11,3 +11,57 @@
 .nav-link:hover{
     color: #e600e6 !important;
 }
+
+ #header{
+    /* background: url(https://jobflare-wordpress-public.s3.amazonaws.com/wp-content/uploads/2020/08/Web-Developer-Header.png) no-repeat;
+    background-size: cover;
+    height: 100vh; */
+    background: linear-gradient(120deg,#2980b9,#8e44ad);
+    height: 100vh;
+   
+} 
+
+.login{
+    margin-top: 25%;
+    margin-left: 35%;
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+    height: 400px;
+}
+
+.login h1,.signup h1{
+    text-align: center;
+    padding: 10px 0 20px 0;
+    border-bottom: 1px solid silver;
+}
+
+.login form,.signup form{
+    padding: 10px 40px ;
+    box-sizing: border-box;
+}
+
+button[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid white ;
+    color: white;
+    background: #2691d9;
+    border-radius: 25px;
+    font-weight: 700;
+    outline: none;
+}
+button[type="submit"]:hover{
+    border-color: #2691d9;
+    transition: .5s;
+}
+
+.signup{
+    position: absolute;
+    width: 400px;
+    top: 30%;
+    right: 40%;
+    background: white;  
+    border-radius: 10px;
+    height: 550px;
+}
