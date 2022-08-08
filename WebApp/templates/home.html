@@ -1,0 +1,21 @@
+{% extends 'base.html' %}{%block title%}Home{%endblock%}
+{%block content%}
+<h1 align="center">Jobs</h1>
+<ul class="list-group list-group-flush" id="jobs">
+  {% for job in user.job %}
+  <li class="list-group-item">
+    {{job.description}}
+    <button type="button" class="close" onClick="deleteNote({{ job.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+<form method="POST">
+  <textarea name="job" id="job" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Job</button>
+  </div>
+</form>
+{%endblock%}

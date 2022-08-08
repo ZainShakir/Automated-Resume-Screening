@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Candidates Search{% endblock %}
+{% block Addnav %}
+<li class="nav-item">
+    <a class="nav-link " href="/job-listing">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link " href="/post-job">Post</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link " href="/view-applicants">View Applicants</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link " href="/search-candidate">Search</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link " href="/logout">LogOut</a>
+</li>
+{% endblock %}
+{% block content %}
+<body onload="delrows('{{len}}'')">
+<div class="contain-fluid" style="margin-top: 50px;">
+        <div class="container ">
+            <div class="row justify-content-center">
+                <div class='col-xs-12 '>
+                    <form class="form-horizontal"method='POST'>
+                        <div class='form-floating mb-3 categoryInput1'>
+                            <label class="form-label">Job-ID</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control"
+                            id="jid"
+                            name="jid"
+                            placeholder="Enter Job-ID">
+                         </div>
+                        </div>
+                        <div class='form-group' style="justify-content: center;  display: flex;">
+                            <input type='submit' class='btn btn-danger sBto'  name='submit' value='Search' style="width: 500px;"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row justify-content-center" style="margin-top: 20px;">
+                <div class='col-xs-12  table-responsive-sm'>
+                    
+                <table class="table table-bordered" id='grid'>
+                    <thead>
+                        <tr>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Skills Extracted</th>
+                            <th class="text-center">Resume/CV</th>
+                            <th class="text-center">Matching Ratio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for i in range(0,len)%}
+                        <tr>
+                            {%if data[i][0]!=0 %}
+                                <td class="text-center">{{data[i][0]}}</td>
+                                <td class="text-center">{{data[i][1]}}</td>
+                                <td class="text-center">{{data[i][2]}}</td>
+                                <td class='text-center'><button class='btn btn-primary' href="#" onClick="show('{{data[i][4]}}')">View Resume</button></td>
+                                <td class="text-center">{{data[i][3]}}</td>
+                                
+                        </tr>
+                        {% endif %}
+                        {%endfor%}
+                        
+                    </tbody>
+                </table>
+                
+                </div>
+            </div>
+        </div>
+</div>
+</body>
+<script>
+    //D:\SEM 6\AIproj\AI-IR\WebApp\static\cvs\ADNAN AHMED - CV for Research Assistants - Lab Instructors.txt
+    //WebApp\static\cvs\ADNAN AHMED - CV for Research Assistants - Lab Instructors.txt
+    function show(a){
+        let features = 'menubar=yes,location=yes,resizable=no,scrollbars=yes,status=no,height=700,width=1000';
+        let url = '/static/cvs/'+a;
+        window.open(url,'_blank',features);
+    }
+    function delrows(len)
+    {
+        for(let i=0;i<len;i++)
+            document.getElementById("grid").deleteRow(i);
+          
+    }
+</script>
+{%endblock%}

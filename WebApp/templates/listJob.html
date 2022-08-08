@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}All Jobs{% endblock %}
+<style>
+  @media screen and (max-width: 480px) {
+      div.mobile_card {
+  margin:auto;width:100%;padding:10px;
+}
+}
+</style>
+{% block Addnav %}
+<li class="nav-item">
+  <a class="nav-link " href="/job-listing">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link " href="/post-job">Post</a>
+</li>
+<li class="nav-item">
+  <li class="nav-item">
+    <a class="nav-link " href="/view-applicants">View Applicants</a>
+</li>
+  <a class="nav-link " href="/search-candidate">Search</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link " href="/logout">LogOut</a>
+</li>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-auto">
+            <h2>Jobs Posted</h2>
+        </div>
+    </div>
+    <div class="row">
+        {% for job in user.job %}
+        <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{job.description.split('.')[0]}}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Job-ID:{{job.id}}</li>
+              <li class="list-group-item">{{job.description.split('.')[1]}}</li>
+              <li class="list-group-item">{{job.description.split('.')[2]}}</li>
+              <li class="list-group-item">Posted On: {{job.date}}</li>
+            </ul>
+            <div class="card-body">
+              <button class='btn btn-primary' href="#" onClick="showJD('{{job.jd_filename}}')">View Details</button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script>
+  function showJD(a){
+    let features = 'menubar=yes,location=yes,resizable=no,scrollbars=yes,status=no,height=700,width=1000';
+    let url = 'AI-IR/WebApp/static/jd/'+a;
+
+    window.open(url,'_blank',features);
+}
+</script>
+{% endblock %}

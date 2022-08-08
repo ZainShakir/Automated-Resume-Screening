@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}ADD Jobs{% endblock %}
+<style>
+  h1{
+      margin-top: 5%;
+  }
+</style>
+{% block Addnav %}
+<li class="nav-item">
+  <a class="nav-link " href="/job-listing2">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link " href="/logout">LogOut</a>
+</li>
+{% endblock %}
+{% block content %}
+        <h1>Apply to Job</h1>
+        <hr>
+        <form  action="" method="POST">
+            <label class="form-label">Email</label>
+            <div class="input-group mb-3">
+                <input type="Email" class="form-control"
+                id="Email"
+                name="Email"
+                placeholder="Enter Email-ID">
+            </div>
+            <label class="form-label">Contact</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control"
+                id="contact"
+                name="contact"
+                placeholder="Enter Password">
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-primary" id="submit" name="buto">Apply</button>
+        </form>
+
+
+{%endblock%}

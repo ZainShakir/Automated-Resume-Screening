@@ -1,0 +1,62 @@
+<!---->
+{% extends 'base.html' %}
+{%block title%}View jobs{%endblock%}
+{% block cstyle %}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'styles.css') }}">
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename= '/fav_icon.jpg') }}">
+
+{%endblock%}
+
+    {% block Addnav %}
+    <li class="nav-item">
+        <a class="nav-link " href="/job-listing2">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " href="/logout">Logout</a>
+    </li>
+    {% endblock %}
+   
+    {%block content%}
+        <div class="wrapper">
+            <div class="header">Recently Posted Jobs</div>
+           
+            <div class="cards_wrap" >
+                <!--Card_1-->
+                {% for job in user.job%}
+                
+                <div class="card_item" >
+                    <div class="card_inner">
+                        <form action="" method="post">
+                        <img src="{{url_for('static',filename = '/logo4.jpg')}}"  alt="logo4">
+                        <input type="hidden" id="jobid" name="jobid" value={{job.id}}>
+                        <input type="hidden" id="recid" name="recid" value={{job.recruiter_id}}>
+                        <label class="form-label" name='job-id' id='job-id'>Job-ID: {{job.id}}</label>
+                        <label class="form-label" name ='rec-id' id='rec-id'>Rec-ID: {{job.recruiter_id}}</label>
+                        <div class="field_name">{{job.description.split('.')[0]}}</div>
+                        <div class="field_name">{{job.description.split('.')[1]}}</div>
+                        <div class="field_name">{{job.description.split('.')[2]}}</div>
+                        <button type="submit" class="btn btn-primary" id="{{job.id}}" name="">
+                            <span>Apply</span> 
+                        </button>
+                    </form>
+                        <button  onclick="showJD('{{job.jd_filename}}')" class="button">
+                            <span>View Details </span>                                                        
+                        </button>
+                    </div>
+                    
+                </div>
+            
+                {%endfor%}
+            </div>   
+        </div>
+     <!--Redirect to next page function-->
+     <script>
+        function showJD(a){
+            let features = 'menubar=yes,location=yes,resizable=no,scrollbars=yes,status=no,height=700,width=1000';
+            let url = 'WebApp/static/jd/'+a;
+            window.open(url,'_blank',features);
+        }
+    </script>
+    <!--Redirect to new page function-->
+
+    {%endblock%}

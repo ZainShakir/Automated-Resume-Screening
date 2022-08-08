@@ -1,0 +1,84 @@
+{% extends 'base.html' %}{%block title%}applicant signup{%endblock%}
+
+{% block Addnav %}
+<li class="nav-item">
+  <a class="nav-link" href="/recruiterLogin">HR Login</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/">Login</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/applicantSignup">Applicant Signup</a>
+</li>
+{%endblock%}
+
+{%block content%}
+<style>       
+  hr{
+      height: 2px;
+      background-color: #333;
+      border: none;
+  }
+</style>
+<form method="POST" enctype = "multipart/form-data">
+    <h1 align="center">Applicant Signup</h1>
+    <hr />
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="Enter email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstName"
+        name="firstName"
+        placeholder="Enter first name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="contact">Contact</label>
+      <input
+        type="contact"
+        class="form-control"
+        id="contact"
+        name="contact"
+        placeholder="Enter your contact#"
+      />
+    </div>
+    <div class="form-group">
+      <label for="password1">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password1"
+        name="password1"
+        placeholder="Enter password"
+      />
+    </div>
+    <div class="form-group">
+      <label for="password2">Password (Confirm)</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password2"
+        name="password2"
+        placeholder="Confirm password"
+      />
+    </div>
+    <div class="form-group">
+      <label for="file">Add Resume/CV ( .txt , .pdf , .docx )</label>
+      <input type="file" class="form-control-file" id="resume" name="resume">
+    </div>
+  
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{%endblock%}
